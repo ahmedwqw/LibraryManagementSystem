@@ -1,0 +1,35 @@
+Project Overview: We're building a Library Management System using Spring Boot.
+Entities:
+    * Book: Represents a book in the library. Contains attributes like title, author, ISBN, etc.
+    * Patron: Represents a library patron. Contains attributes like name, email, phone number, etc.
+    * BorrowingRecord: Represents a record of a book being borrowed by a patron. Links books and patrons.
+Functionality:
+    * CRUD operations for books and patrons.
+    * Borrowing and returning books.
+    * Error handling.
+    * Input validation.
+    * Logging.
+    * Caching.
+    * Security with basic authentication.
+Technologies Used:
+   * Spring Boot for building RESTful APIs.
+   * JPA (Java Persistence API) for database operations.
+   * Hibernate as the JPA provider.
+   * Spring Security for authentication and authorization.
+   * Spring AOP (Aspect-Oriented Programming) for logging.
+   * Mockito for unit testing.
+   * Jakarta Validation for input validation.
+Project Structure:
+   * Controllers: Handle incoming HTTP requests and delegate to services.
+   * Services: Contain business logic and interact with repositories.
+   * Repositories: Interface with the database.
+   * Exceptions: Custom exception classes.
+   * Utility: Contains utility classes, enums, etc.
+   * Tests: Unit tests for controllers, services, and repositories.
+Security:
+   * Basic authentication to protect API endpoints.
+   * Custom login form.
+   * Authorization based on user roles (USER, ADMIN).
+Testing:
+   * Unit tests for controllers, services, and repositories using Mockito.
+   * Integration tests for API endpoints.
