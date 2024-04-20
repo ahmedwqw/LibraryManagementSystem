@@ -15,7 +15,7 @@ Technologies Used:
    * Spring Boot for building RESTful APIs.
    * JPA (Java Persistence API) for database operations.
    * Hibernate as the JPA provider.
-   * Spring Security for authentication and authorization.
+   * Spring Security for authentication and authorization.f
    * Spring AOP (Aspect-Oriented Programming) for logging.
    * Mockito for unit testing.
    * Jakarta Validation for input validation.
