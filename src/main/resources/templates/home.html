@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,7 @@
             justify-content: center;
             height: 100vh;
             color: #fff;
+            position: relative; /* Added */
         }
 
         .container {
@@ -36,12 +37,39 @@
             margin-bottom: 20px;
         }
 
+        /* Added */
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #021213;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Welcome to Library Management System by Ahmed Elkelany!</h1>
     <p>This is the home page. Explore and access our API Endpoints.</p>
+    <button class="logout-button"  th:if="${isLoggedIn}" onclick="logout()">Logout</button>
+    <button class="logout-button"  th:if="${!isLoggedIn}" onclick="login()">login</button>
+
 </div>
+
+<script>
+    function logout() {
+        window.location.href = "/logout";
+    }
+
+    function login() {
+        window.location.href = "/login";
+    }
+</script>
+
 </body>
 </html>
+

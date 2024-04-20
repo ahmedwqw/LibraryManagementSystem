@@ -2,12 +2,12 @@ package com.kilany.LibraryManagementSystem.security;
 
 import com.kilany.LibraryManagementSystem.security.model.MyUser;
 import com.kilany.LibraryManagementSystem.security.model.MyUserRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 public class RegistrationController {
@@ -19,10 +19,16 @@ public class RegistrationController {
     private MyUserRepository userRepository;
 
     @PostMapping("/register_user")
-    public MyUser createUser(@RequestBody MyUser user){
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return  userRepository.save(user);
+    public RedirectView createUser(@RequestParam("username")String username , @RequestParam("password") String password){
+        MyUser user = new MyUser();
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+
+        // Redirect to the login page
+        return new RedirectView("/login", true);
     }
+
 
 
 }

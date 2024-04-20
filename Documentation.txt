@@ -7,15 +7,7 @@ second:
     inset the data in testDate.sql file in the resources' directory to database to help test the API Endpoints
 
 third:
-   set username and password by using postman with  POST http://localhost:<yourPort||4040>/register_user
-   ex:  {
-
-               "username": "user2",
-               "password": "1234",
-               "role": "USER"
-       }
-
-   then login to http://localhost:<yourPort||4040>/login
+        create  username and password and login
 
 last:
     use postMan to Interacting with API Endpoints:

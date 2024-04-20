@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>User Registration</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,21 +49,13 @@
         button:hover {
             background-color: #0056b3;
         }
-        .signup-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .signup-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Login</h2>
-    <form action="/login" method="post">
+    <h2>User Registration</h2>
+    <form action="/register_user" method="post">
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -72,11 +64,8 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
     </form>
-    <div class="signup-link">
-        <p>Don't have an account? <a href="/register_user">Create one</a></p>
-    </div>
 </div>
 
 </body>
