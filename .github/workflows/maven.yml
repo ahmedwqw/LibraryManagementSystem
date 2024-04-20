@@ -1,11 +1,3 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Java CI with Maven
 
 on:
@@ -19,6 +11,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      DB_URL: jdbc:mysql://localhost:3306/LibraryManagementSystemDb?useSSL=false&serverTimezone=UTC
+      DB_USERNAME: root
+      DB_PASSWORD: Ahmed1234
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -31,6 +28,4 @@ jobs:
       run: mvn -B package --file pom.xml
       
     - name: Run Spring Boot Application
-      run: mvn spring-boot:run
-
-
+      run: mvn spring-boot:run -Dspring-boot.run.arguments=--spring.datasource.url=${DB_URL},--spring.datasource.username=${DB_USERNAME},--spring.datasource.password=${DB_PASSWORD}
