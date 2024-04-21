@@ -4,6 +4,7 @@ import com.kilany.LibraryManagementSystem.Entites.Book;
 import com.kilany.LibraryManagementSystem.Exceptions.ResourceNotFoundException;
 import com.kilany.LibraryManagementSystem.Repositories.BookRepository;
 import com.kilany.LibraryManagementSystem.utitlity.ISBNGenerator;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class BookService {
 
     @Autowired
@@ -40,8 +42,6 @@ public class BookService {
         // Find the existing book by id
         Book existingBook = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + id));
 
-
-
         // Update the attributes of the existing book
         existingBook.setTitle(updatedBook.getTitle());
         existingBook.setAuthor(updatedBook.getAuthor());
@@ -49,7 +49,6 @@ public class BookService {
         existingBook.setDescription(updatedBook.getDescription());
         existingBook.setPublicationDate(updatedBook.getPublicationDate());
         existingBook.setLanguage(updatedBook.getLanguage());
-
 
         // Save the updated book
         return bookRepository.save(existingBook);
