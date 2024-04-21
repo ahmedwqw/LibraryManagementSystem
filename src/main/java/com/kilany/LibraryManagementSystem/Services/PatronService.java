@@ -4,6 +4,7 @@ import com.kilany.LibraryManagementSystem.Entites.Patron;
 import com.kilany.LibraryManagementSystem.Exceptions.ResourceNotFoundException;
 import com.kilany.LibraryManagementSystem.Repositories.PatronRepository;
 import com.kilany.LibraryManagementSystem.utitlity.MembershipType;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -16,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class PatronService {
 
     @Autowired
@@ -39,8 +41,7 @@ public class PatronService {
             // Set membershipExpiryDate as one year from now
             LocalDate expiryDate = LocalDate.now().plusYears(1);
             patron.setMembershipExpiryDate(expiryDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        } else {
-            // lifetime membership
+        } else {// lifetime membership
             LocalDate expiryDate = LocalDate.now().plusYears(100);
             patron.setMembershipExpiryDate(expiryDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
         }
