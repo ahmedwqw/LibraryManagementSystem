@@ -3,6 +3,7 @@ package com.kilany.LibraryManagementSystem.Services;
 import com.kilany.LibraryManagementSystem.Entites.BorrowingRecord;
 import com.kilany.LibraryManagementSystem.Exceptions.ResourceNotFoundException;
 import com.kilany.LibraryManagementSystem.Repositories.BorrowingRecordRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class BorrowingRecordService {
 
     @Autowired
@@ -33,9 +35,9 @@ public class BorrowingRecordService {
     public BorrowingRecord saveBorrowingRecord(BorrowingRecord borrowingRecord) {
         // Set borrow date as current date
         borrowingRecord.setBorrowDate(LocalDate.now().toString());
-
         // Set return date as borrow date + 14 days (assuming a 14-day borrowing period)
         borrowingRecord.setReturnDate(LocalDate.now().plusDays(14).toString());
+
         return borrowingRecordRepository.save(borrowingRecord);
     }
 
